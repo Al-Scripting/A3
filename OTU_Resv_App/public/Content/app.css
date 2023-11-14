@@ -1,0 +1,65 @@
+* html{
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #00B7FF;
+}
+
+body {
+  padding-top: 200px;
+}
+
+/* Style navigation links in the top bar */
+
+
+
+.navbar {
+  background-color: rgba(43, 52, 153, 0.90);
+}
+
+.navbar-nav .nav-link {
+  color: #FFD099;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #FF6C22;
+}
+
+/* Style icons and active links in the bottom navbar */
+.navbar-icons {
+  margin-right: 5%;
+  display: flex;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+}
+
+.navbar-icons a i {
+  margin-right: 10px;
+}
+
+.navbar-nav .nav-item.active .nav-link {
+  color: #ffcc00;
+}
+
+
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f8f9fa; /* Bootstrap light gray background color */
+
+  text-align: center;
+}
+
+.splash-content {
+  text-align: center;
+  margin-top: 100px; /* Adjust the top margin as needed */
+}
+
+.reserve-btn {
+  margin-top: 20px; /* Adjust the top margin as needed */
+}

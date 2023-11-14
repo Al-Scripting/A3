@@ -1,0 +1,50 @@
+<% include ../partials/header.ejs %>
+
+<title>Student-Database</title>
+<link rel="icon" type="image/x-icon" href="/assets/images/otu-fav.png">
+
+<% include ../partials/nav.ejs %>
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-10">
+            <a href="/studentlist/add" class="btn btn-primary mb-3"
+               role="button"><i class="fas fa-plus-circle"></i> Add Student</a>
+            <br>
+            <table class="table table-bordered table-striped table-hover">
+                <tr class="d-flex">
+                    <th class="text-center col-2">Name</th>
+                    <th class="text-center col-2">StudentNum</th>
+                    <th class="text-center col-4">PhoneNum</th>
+                    <th class="text-center col-4">Year</th>
+                    <th class="text-center col-1">Gpa</th>
+                </tr>
+                <% for(let count=0;count<StudentList.length;count++) { %>
+                    <tr class="d-flex">
+                        <td class="text-center col-2"><%= StudentList[count].Name %></td>
+                        <td class="text-center col-2"><%= StudentList[count].StudentNum %></td>
+                        <td class="text-center col-4"><%= StudentList[count].PhoneNum %></td>
+                        <td class="text-center col-4"><%= StudentList[count].Year %></td>
+                        <td class="text-center col-1"><%= StudentList[count].Gpa %></td>
+                        <td class="text-center col-1">
+                            <a href="/studentlist/edit/<%= StudentList[count]._id %>"
+                               class="btn btn-primary btn-sm">
+                                <i class="fas fa-pencil-alt"></i> Edit
+                            </a>
+                        </td>
+                        <td class="text-center col-1">
+                            <a href="/studentlist/delete/<%= StudentList[count]._id %>"
+                               class="btn btn-danger btn-sm">
+                                <i class="fas trash-alt"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+                <% } %>
+            </table>
+        </div>
+    </div>
+</main>
+
+
+<% include ../partials/footer.ejs %>
+<% include ../partials/bottom.ejs %>
