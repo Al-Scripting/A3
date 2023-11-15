@@ -6,13 +6,13 @@ let StudentController = require('../controllers/Info_students')
 /* Get route for the Info Student list */
 // Read Operation
 router.get('/', StudentController.DislayStudentlist);
-/* Get route for Add Book page --> Create */
+/* Get route for Add Student page --> Create */
 router.get('/add', StudentController.AddStudent);
-/* Post route for Add Book page --> Create */
+/* Post route for Add Student page --> Create */
 router.post('/add', StudentController.ProcessStudent);
-/* Get route for displaying the Edit Book page --> Update */
+/* Get route for displaying the Edit Student page --> Update */
 router.get('/edit/:id', StudentController.EditStudent);
-/* Post route for processing the Edit Book page --> Update */
+/* Post route for processing the Edit Student page --> Update */
 router.post('/edit/:id', StudentController.ProcessEditStudent);
 /* Get to perform Delete Operation --> Delete Operation */
 router.get('/delete/:id', StudentController.DeleteStudent);

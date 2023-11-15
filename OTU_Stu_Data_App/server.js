@@ -5,14 +5,14 @@
  */
 
 var app = require('./server/config/app.js');
-var debug = require('debug')('OTU_Resv_App:server');
+var debug = require('debug')('OTU_Stu_Data_App:server');
 var http = require('http');
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '5000');
+var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
