@@ -7,15 +7,38 @@
     <div class="collapse navbar-collapse justify-content-md-center">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="/home"><img src="/Asset/images/favicon/favicon-32x32.png" id="otu-logo"></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/home"><i class="fa-solid fa-house fa-sm"></i> Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " href="/studentlist"><i class="fa-regular fa-pen-to-square"></i> Student Database</a>
+                    <a class="nav-link" href="/home">
+                        <i class="fa-solid fa-lg fa-house-laptop"></i> Home</a>
             </li>
 
+            <li class="nav-item">
+                <% if(title == "Student List") { %>
+                <a class="nav-link active" href="/studentlist">
+                    <% } else { %>
+                    <a class="nav-link" href="/studentlist">
+                        <% } %>
+                        <i class="fa-solid fa-book"></i> Students</a>
+            </li>
+
+            <% if(typeof displayName == 'string' && displayName) { %>
+
+                <li class="nav-item">
+                    <a href="/logout" class="nav-link" >
+                        <i class="fa-solid fa-sign-out-alt"></i> Logout</a>
+                </li>
+
+                <li class="navbar-text">
+                    <i class="fas fa-lg fa-user"></i>
+                    Welcome, <%= displayName %>
+                </li>
+
+            <% } else { %>
+                <li class="nav-item">
+                    <a href="/login" class="nav-link">
+                        <i class="fa-solid fa-sign-in-alt"></i> Login</a>
+                </li>
+            <% } %>
         </ul>
+    </div>
     </div>
 </nav>

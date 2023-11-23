@@ -8,7 +8,9 @@ module.exports.DislayStudentlist = async (req,res,next)=>{ //< Mark function as 
         const StudentList = await Student.find(); //< Use of await keyword
         res.render('student/list', {
             title: 'Student List',
-            StudentList: StudentList
+            StudentList: StudentList,
+            displayName: req.user ? req.user.displayName:''
+
         });
     }catch(err){
         console.error(err);
@@ -23,7 +25,8 @@ module.exports.AddStudent = async (req,res,next)=>{
     try{
         res.render('student/add',
             {
-                title:'Add student'
+                title:'Add student',
+                displayName: req.user ? req.user.displayName:'',
             })
     }
     catch(err)

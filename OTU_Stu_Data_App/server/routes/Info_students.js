@@ -3,6 +3,18 @@ var router = express.Router();
 //const { router } = require('../config/app');
 let Student = require('../models/Info_students');
 let StudentController = require('../controllers/Info_students')
+
+let mongoose = require('mongoose');
+// helper function
+function requireAuth(req,res,next){
+    if(!req.isAuthenticated())
+    {
+        return res.redirect('/login')
+    }
+    next();
+}
+
+
 /* Get route for the Info Student list */
 // Read Operation
 router.get('/', StudentController.DislayStudentlist);

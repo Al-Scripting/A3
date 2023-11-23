@@ -5,63 +5,64 @@
 
 <% include ../partials/nav.ejs %>
 
-<main class="container mt-4">
+<main class="container">
     <div class="row">
-        <div class="col-md-10">
-
-            <h1 class="mb-4">Student Database</h1>
-
-            <!-- Add Student Button -->
-            <a href="/studentlist/add" class="btn btn-primary mb-3" role="button" id="add-btn">
-                <i class="fas fa-plus-circle"></i> Add Student
-            </a>
+        <div class="col-md-offset-3 col-md-10">
+            <h1>Add Student</h1>
+            <% if(typeof displayName=='string' && displayName) { %>
+                <a href="/studentlist/add" class="btn btn-primary" role="button">
+                    <i class="fas fa-plus-circle"></i> Add a Student </a>
+                <br>
+            <% } %>
             <br>
-
-            <!-- Student Table -->
-            <table class="table table-bordered table-striped table-hover">
-                <!-- Table Header -->
-                <thead class="thead-dark">
+            <table class= "table table-bordered table-striped table-hover">
                 <tr class="d-flex">
-                    <th class="text-center col-2">Name</th>
-                    <th class="text-center col-2">StudentNum</th>
-                    <th class="text-center col-4">PhoneNum</th>
-                    <th class="text-center col-2">Year</th>
-                    <th class="text-center col-1">Gpa</th>
-                    <th class="text-center col-2">Actions</th>
-                </tr>
-                </thead>
-                <!-- Table Body -->
-                <tbody>
-                <% for(let count=0; count<StudentList.length; count++) { %>
-                    <tr class="d-flex">
-                        <!-- Student Data -->
-                        <td class="text-center col-2"><%= StudentList[count].Name %></td>
-                        <td class="text-center col-2"><%= StudentList[count].StudentNum %></td>
-                        <td class="text-center col-4"><%= StudentList[count].PhoneNum %></td>
-                        <td class="text-center col-2"><%= StudentList[count].Year %></td>
-                        <td class="text-center col-1"><%= StudentList[count].Gpa %></td>
+                    <% if(typeof displayName=='string' && displayName) { %>
+                        <th class="text-center col-2">Name</th>
+                        <th class="text-center col-2">Student #</th>
+                        <th class="text-center col-2">PhoneNum</th>
+                        <th class="text-center col-1">Year</th>
+                        <th class="text-center col-1">GPA</th>
+                        <th class="text-center col-1"></th>
+                        <th class="text-center col-1"></th>
+                    <% } else { %>
+                        <th class="text-center col-2">Name</th>
+                        <th class="text-center col-2">Student #</th>
+                        <th class="text-center col-2">PhoneNum</th>
+                        <th class="text-center col-1">Year</th>
+                        <th class="text-center col-1">GPA</th>
+                        <th class="text-center col-1"></th>
+                    <% } %>
 
-                        <!-- Edit and Delete Actions -->
-                        <td class="text-center col-2">
-                            <a href="/studentlist/edit/<%= StudentList[count]._id %>" class="btn btn-primary btn-sm">
-                                <i class="fas fa-pencil-alt"></i> Edit
-                            </a>
-                            <a href="#" class="btn btn-danger btn-sm" onclick="confirmDelete('<%= StudentList[count]._id %>')">
-                                <i class="fas trash-alt"></i> Delete
-                            </a>
-                            <!-- JavaScript Confirmation Dialog -->
-                            <script>
-                                function confirmDelete(studentId) {
-                                    var result = confirm("Are you sure you want to delete this entry?");
-                                    if (result) {
-                                        window.location.href = "/studentlist/delete/" + studentId;
-                                    }
-                                }
-                            </script>
-                        </td>
+                </tr>
+                <!-- Repeat the template -->
+                <% for(let count=0; count < StudentList.length; count++) { %>
+                    <tr class="d-flex">
+                        <% if(typeof displayName=='string' && displayName) { %>
+                            <td class="text-center col-2"><%= StudentList[count].Name %></td>
+                            <td class="text-center col-2"><%= StudentList[count].StudentNum %></td>
+                            <td class="text-center col-2"><%= StudentList[count].PhoneNum %></td>
+                            <td class="text-center col-1"><%= StudentList[count].Year %></td>
+                            <td class="text-center col-1"><%= StudentList[count].Gpa %></td>
+                            <td class="text-center col-1">
+                                <a href="/studentlist/edit/<%= StudentList[count]._id %>"
+                                   class="btn btn-primary">
+                                    <i class="fas fa-pencil-alt"></i> Edit </a>
+                            </td>
+                            <td class="text-center col-1">
+                                <a href="/studentlist/delete/<%= StudentList[count]._id %>"
+                                   class="btn btn-danger">
+                                    <i class="fas fa-trash-alt"></i> Delete </a>
+                            </td>
+                        <% } else { %>
+                            <td class="text-center col-2"><%= StudentList[count].Name %></td>
+                            <td class="text-center col-2"><%= StudentList[count].StudentNum %></td>
+                            <td class="text-center col-2"><%= StudentList[count].PhoneNum %></td>
+                            <td class="text-center col-1"><%= StudentList[count].Year %></td>
+                            <td class="text-center col-1"><%= StudentList[count].Gpa %></td>
+                        <% } %>
                     </tr>
                 <% } %>
-                </tbody>
             </table>
         </div>
     </div>
