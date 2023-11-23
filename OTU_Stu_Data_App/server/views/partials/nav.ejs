@@ -7,7 +7,11 @@
     <div class="collapse navbar-collapse justify-content-md-center">
         <ul class="navbar-nav">
             <li class="nav-item active">
+                <% if(title == "Home") { %>
+                <a class="nav-link active" href="/home">
+                    <% } else { %>
                     <a class="nav-link" href="/home">
+                        <% } %>
                         <i class="fa-solid fa-lg fa-house-laptop"></i> Home</a>
             </li>
 
